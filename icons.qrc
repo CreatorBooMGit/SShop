@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/purchase.ico</file>
+        <file>icons/goods.ico</file>
+        <file>icons/people.ico</file>
+        <file>icons/purchase2.ico</file>
+        <file>icons/SShop.ico</file>
+        <file>icons/provider.ico</file>
+        <file>icons/add.ico</file>
+        <file>icons/edit.ico</file>
+        <file>icons/remove.ico</file>
+        <file>icons/login.ico</file>
+        <file>icons/calendar.ico</file>
+        <file>icons/clock.ico</file>
+        <file>icons/host.ico</file>
+        <file>icons/user.ico</file>
+    </qresource>
+</RCC>

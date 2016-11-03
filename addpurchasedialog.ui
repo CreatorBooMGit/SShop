@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddPurchaseDialog</class>
+ <widget class="QDialog" name="AddPurchaseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>189</width>
+    <height>374</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Додавання товару</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/icons/add.ico</normaloff>:/icons/icons/add.ico</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="codLabel">
+     <property name="text">
+      <string>Артикул</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Додати </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="canselButton">
+       <property name="text">
+        <string>Відміна</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="12" column="0">
+    <widget class="QLabel" name="sumLabel">
+     <property name="text">
+      <string>Сума</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0">
+    <widget class="QDoubleSpinBox" name="pricePDVSpinBox">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="maximum">
+      <double>999999999.990000009536743</double>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QSpinBox" name="countSpin">
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
+     <property name="maximum">
+      <number>999999999</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLineEdit" name="providerEdit">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QLabel" name="priceLabel">
+     <property name="text">
+      <string>Ціна з ПДВ</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="nameLabel">
+     <property name="text">
+      <string>Назва </string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QComboBox" name="nameBox">
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+     <property name="insertPolicy">
+      <enum>QComboBox::NoInsert</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLineEdit" name="codEdit">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QDoubleSpinBox" name="priceSpinBox">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="maximum">
+      <double>9999999999999.990234375000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="countLabel">
+     <property name="text">
+      <string>Кількість</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="providerLabel">
+     <property name="text">
+      <string>Виробник</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="0">
+    <widget class="QDoubleSpinBox" name="sumSpin">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="maximum">
+      <double>9999999999.989999771118164</double>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="pricePDVLabel">
+     <property name="text">
+      <string>Ціна</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

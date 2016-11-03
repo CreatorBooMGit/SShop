@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/rpt">
+        <file>check.xml</file>
+    </qresource>
+</RCC>

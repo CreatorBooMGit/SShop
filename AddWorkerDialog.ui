@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddWorkerDialog</class>
+ <widget class="QDialog" name="AddWorkerDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>186</width>
+    <height>381</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Додавання працівника</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/icons/add.ico</normaloff>:/icons/icons/add.ico</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="surnamelabel">
+     <property name="text">
+      <string>Прізвище</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLineEdit" name="surnameEdit"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="nameLabel">
+     <property name="text">
+      <string>Ім'я</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLineEdit" name="nameEdit"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="patronymicLabel">
+     <property name="text">
+      <string>По батькові</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLineEdit" name="patronymicEdit"/>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="phoneLabel">
+     <property name="text">
+      <string>Номер</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLineEdit" name="phoneEdit"/>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="positionLabel">
+     <property name="text">
+      <string>Посада</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QComboBox" name="positionCombo">
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QLabel" name="loginLabel">
+     <property name="text">
+      <string>Логін</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0">
+    <widget class="QLineEdit" name="loginEdit"/>
+   </item>
+   <item row="12" column="0">
+    <widget class="QLabel" name="passwordLabel">
+     <property name="text">
+      <string>Пароль</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="0">
+    <widget class="QLineEdit" name="passwordEdit">
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="OKButton">
+       <property name="text">
+        <string>ОК</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="text">
+        <string>Відміна</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
