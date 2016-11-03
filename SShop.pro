@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     ServerSettingDialog.cpp \
     PostSettingDialog.cpp \
     AddPostDialog.cpp \
-    EditPostDialog.cpp
+    EditPostDialog.cpp \
+    access.cpp
 
 HEADERS  += mainwindow.h \
     authdialog.h \
@@ -44,7 +45,8 @@ HEADERS  += mainwindow.h \
     ServerSettingDialog.h \
     PostSettingDialog.h \
     AddPostDialog.h \
-    EditPostDialog.h
+    EditPostDialog.h \
+    access.h
 
 FORMS    += mainwindow.ui \
     authdialog.ui \

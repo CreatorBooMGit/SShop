@@ -10,6 +10,7 @@
 #include "qtrpt.h"
 #include "PostSettingDialog.h"
 #include "ServerSettingDialog.h"
+#include "access.h"
 
 #include <QDebug>
 #include <QMessageBox>
@@ -70,6 +71,12 @@ MainWindow::MainWindow(QWidget *parent) :
     authDialog->exec();
     delete authDialog;
 
+    // ##########ACCESS###############
+    access = new Access(userInfo.login, query);
+
+    updateAccess();
+    // #########END ACCESS############
+
     settings->beginGroup("Size");
     resize(settings->value("mainWidth", QString()).toInt(), settings->value("mainHeight", QString()).toInt());
     ui->tablePurchase->resize(settings->value("tablePurchaseWidth", QString()).toInt(), settings->value("tablePurchaseHeight", QString()).toInt());
@@ -122,7 +129,7 @@ void MainWindow::on_actionCheck_triggered()
 
 void MainWindow::on_actionGoods_triggered()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(2);
 }
 
 void MainWindow::updateTableGoods()
@@ -193,6 +200,31 @@ void MainWindow::checkShow()
     });
 
     check->printExec();
+}
+
+void MainWindow::updateAccess()
+{
+    ui->actionGoods->setVisible(access->checkAccess("goodsEnabled"));
+    ui->actionPost->setVisible(access->checkAccess("postsEnabled"));
+    ui->actionProviders->setVisible(access->checkAccess("providerEnabled"));
+    ui->menuSettings->setEnabled(access->checkAccess("settingsEnabled"));
+    ui->actionSettingServer->setVisible(access->checkAccess("serverSettingEnabled"));
+    ui->actionCheck->setVisible(access->checkAccess("purchaseEnabled"));
+    if(!access->checkAccess("purchaseEnabled"))
+    {
+        if(access->checkAccess("goodsEnabled"))
+            ui->stackedWidget->setCurrentIndex(2);
+        else
+            ui->stackedWidget->setCurrentIndex(1);
+    }
+    ui->addPurchaseButton->setEnabled("addPurchaseEnabled");
+    ui->removePurchaseButton->setEnabled("removePurchaseEnabled");
+    ui->confirmPurchasesButton->setEnabled("confirmPurchaseEnabled");
+    ui->printPurchaseButton->setEnabled("printPurchaseEnabled");
+
+    ui->addGoodButton->setEnabled("addGoodEnabled");
+    ui->editGoodButton->setEnabled("editGoodEnabled");
+    ui->removeGoodButton->setEnabled("removeGoodEnabled");
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)
@@ -406,6 +438,7 @@ void MainWindow::on_actionPost_triggered()
     PostSettingDialog *postDialog = new PostSettingDialog(query, this);
     postDialog->exec();
     delete postDialog;
+    updateAccess();
 }
 
 void MainWindow::on_actionSettingServer_triggered()

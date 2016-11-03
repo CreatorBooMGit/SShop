@@ -7,6 +7,7 @@
 #include <QSettings>
 #include <QLabel>
 #include <QTimer>
+#include "access.h"
 #include "usertypes.h"
 
 namespace Ui {
@@ -61,8 +62,11 @@ private:
     QVector <int> goodsId;
     QVector <purchase> purchaseList;
 
+    Access *access;
+
     void updateTableGoods();
     void checkShow();
+    void updateAccess();
 
     // QWidget interface
 protected:
