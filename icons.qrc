@@ -14,5 +14,7 @@
         <file>icons/clock.ico</file>
         <file>icons/host.ico</file>
         <file>icons/user.ico</file>
+        <file>icons/employees.ico</file>
+        <file>icons/info.ico</file>
     </qresource>
 </RCC>

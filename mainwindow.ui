@@ -534,16 +534,28 @@
    </property>
   </action>
   <action name="actionSettingServer">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/host.ico</normaloff>:/icons/icons/host.ico</iconset>
+   </property>
    <property name="text">
     <string>Серверу</string>
    </property>
   </action>
   <action name="actionPost">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/employees.ico</normaloff>:/icons/icons/employees.ico</iconset>
+   </property>
    <property name="text">
     <string>Посади</string>
    </property>
   </action>
   <action name="actionAboutProgram">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/info.ico</normaloff>:/icons/icons/info.ico</iconset>
+   </property>
    <property name="text">
     <string>Про программу</string>
    </property>

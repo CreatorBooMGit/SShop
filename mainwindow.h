@@ -41,6 +41,8 @@ private slots:
     void updateTimeStatusBar();
     void on_actionPost_triggered();
 
+    void on_actionSettingServer_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;

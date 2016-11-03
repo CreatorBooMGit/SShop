@@ -9,6 +9,7 @@
 #include "ProvidersDialog.h"
 #include "qtrpt.h"
 #include "PostSettingDialog.h"
+#include "ServerSettingDialog.h"
 
 #include <QDebug>
 #include <QMessageBox>
@@ -405,4 +406,11 @@ void MainWindow::on_actionPost_triggered()
     PostSettingDialog *postDialog = new PostSettingDialog(query, this);
     postDialog->exec();
     delete postDialog;
+}
+
+void MainWindow::on_actionSettingServer_triggered()
+{
+    ServerSettingDialog *serverDialog = new ServerSettingDialog(this);
+    serverDialog->exec();
+    delete serverDialog;
 }
