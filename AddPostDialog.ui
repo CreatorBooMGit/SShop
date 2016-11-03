@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>278</width>
-    <height>351</height>
+    <width>272</width>
+    <height>336</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,6 +25,18 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="OKButton">
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
         <string>OK</string>
        </property>
@@ -45,6 +57,18 @@
      </item>
      <item>
       <widget class="QPushButton" name="fuckButton">
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
         <string>Відміна</string>
        </property>

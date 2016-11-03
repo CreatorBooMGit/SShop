@@ -19,6 +19,8 @@ public:
 private slots:
     void on_editButton_clicked();
 
+    void on_fuckButton_clicked();
+
 private:
     Ui::EditPostDialog *ui;
     QSqlQuery *query;

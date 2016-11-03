@@ -1,6 +1,8 @@
 #include "AddPostDialog.h"
 #include "ui_AddPostDialog.h"
 
+#include <QMessageBox>
+
 AddPostDialog::AddPostDialog(QSqlQuery *q, QWidget *parent) :
     QDialog(parent), query(q),
     ui(new Ui::AddPostDialog)
@@ -31,9 +33,9 @@ AddPostDialog::~AddPostDialog()
 
 void AddPostDialog::on_OKButton_clicked()
 {
-    query->prepare("INSERT INTO `posts` (`name`) "
-                   "VALUES (:name); ");
-    query->bindValue(":name", ui->postEdit->text());
+    query->prepare("INSERT INTO `positions` (`position`) "
+                   "VALUES (:position)");
+    query->bindValue(":position", ui->postEdit->text());
     if(query->exec())
     {
         int idpost = query->lastInsertId().toInt();
@@ -42,7 +44,7 @@ void AddPostDialog::on_OKButton_clicked()
             if(ui->accessList->item(i)->checkState() == Qt::Checked)
             {
                 query->prepare("INSERT INTO `access_post` (`access`, `post`) VALUES (:access, :post)");
-                query->bindValue(":access", accessLevels[i].id);
+                query->bindValue(":access", accessLevels[i].idAccess);
                 query->bindValue(":post", idpost);
                 query->exec();
             }

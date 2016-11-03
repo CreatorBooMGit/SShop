@@ -3,6 +3,8 @@
 #include "AddPostDialog.h"
 #include "EditPostDialog.h"
 
+#include <QMessageBox>
+
 PostSettingDialog::PostSettingDialog(QSqlQuery *q, QWidget *parent) :
     QDialog(parent), query(q),
     ui(new Ui::PostSettingDialog)
@@ -22,6 +24,7 @@ void PostSettingDialog::on_addButton_clicked()
     AddPostDialog *addDialog = new AddPostDialog(query, this);
     addDialog->exec();
     delete addDialog;
+    updatePosts();
 }
 
 void PostSettingDialog::on_editButton_clicked()
@@ -29,11 +32,25 @@ void PostSettingDialog::on_editButton_clicked()
     EditPostDialog *editDialog = new EditPostDialog(posts[ui->tableWidget->currentRow()].idpost, query, this);
     editDialog->exec();
     delete editDialog;
+    updatePosts();
 }
 
 void PostSettingDialog::on_removeButton_clicked()
 {
-
+    QMessageBox confirmMsg;
+    confirmMsg.setWindowTitle(tr("Видалення посади"));
+    confirmMsg.setText(tr("Підтвердити видалення?"));
+    QAbstractButton *confirmMsgButtonYes = confirmMsg.addButton(tr("Підтвердити"), QMessageBox::YesRole);
+    QAbstractButton *confirmMsgButtonNo = confirmMsg.addButton(tr("Відміна"), QMessageBox::NoRole);
+    confirmMsg.exec();
+    if(confirmMsg.clickedButton() == confirmMsgButtonYes)
+    {
+        query->prepare("DELETE FROM `positions` "
+                       "WHERE `idposition` = :idposition");
+        query->bindValue(":idposition", posts[ui->tableWidget->currentRow()].idpost);
+        query->exec();
+        updatePosts();
+    }
 }
 
 void PostSettingDialog::updatePosts()
@@ -58,17 +75,18 @@ void PostSettingDialog::updatePosts()
     {
         query->prepare("SELECT access.description "
                        "FROM access, access_post "
-                       "WHERE access.idaccess = access_post.idaccess AND access_post.post = :post");
+                       "WHERE access.idaccess = access_post.access AND access_post.post = :post");
         query->bindValue(":post", posts[i].idpost);
         query->exec();
         QString descriptions;
         while(query->next())
         {
             descriptions.push_back(query->value("description").toString());
-            descriptions.append(" ");
+            descriptions.push_back(", ");
         }
         if(descriptions.size() > 0)
-            descriptions.remove(descriptions.size() - 1, 1);
+            descriptions.remove(descriptions.size() - 2, 2);
+
         QTableWidgetItem *item = new QTableWidgetItem(descriptions);
         item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         ui->tableWidget->setItem(i, 1, item);
