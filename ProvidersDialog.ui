@@ -20,6 +20,9 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTableWidget" name="tableProviders">
+     <property name="contextMenuPolicy">
+      <enum>Qt::CustomContextMenu</enum>
+     </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>127</number>
      </attribute>
@@ -140,6 +143,42 @@
     </layout>
    </item>
   </layout>
+  <action name="actionAddProvider">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/add.ico</normaloff>:/icons/icons/add.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Додати постачальника</string>
+   </property>
+  </action>
+  <action name="actionEditProvider">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/edit.ico</normaloff>:/icons/icons/edit.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Редагувати постачальника</string>
+   </property>
+  </action>
+  <action name="actionRemoveProvider">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/remove.ico</normaloff>:/icons/icons/remove.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Видалити постачальника</string>
+   </property>
+  </action>
+  <action name="actionUpdateProviders">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/update.ico</normaloff>:/icons/icons/update.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Оновити</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="icons.qrc"/>

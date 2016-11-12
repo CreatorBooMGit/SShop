@@ -3,6 +3,7 @@
 #include "ProvidersDialog.h"
 #include "ui_ProvidersDialog.h"
 
+#include <QMenu>
 #include <QMessageBox>
 
 ProvidersDialog::ProvidersDialog(QSqlQuery *q, QWidget *parent) :
@@ -74,4 +75,38 @@ void ProvidersDialog::on_tableProviders_itemSelectionChanged()
 {
     ui->editButton->setEnabled(true);
     ui->removeButton->setEnabled(true);
+}
+
+void ProvidersDialog::on_actionAddProvider_triggered()
+{
+    on_addButton_clicked();
+}
+
+void ProvidersDialog::on_actionEditProvider_triggered()
+{
+    on_editButton_clicked();
+}
+
+void ProvidersDialog::on_actionRemoveProvider_triggered()
+{
+    on_removeButton_clicked();
+}
+
+void ProvidersDialog::on_actionUpdateProviders_triggered()
+{
+    updateProviders();
+}
+
+void ProvidersDialog::on_tableProviders_customContextMenuRequested(const QPoint &pos)
+{
+    QMenu contextTableMenu;
+    contextTableMenu.addAction(ui->actionAddProvider);
+    contextTableMenu.addAction(ui->actionEditProvider);
+    contextTableMenu.addAction(ui->actionRemoveProvider);
+    contextTableMenu.addSeparator();
+    contextTableMenu.addAction(ui->actionUpdateProviders);
+
+    QPoint globalPos = ui->tableProviders->mapToGlobal(pos);
+
+    contextTableMenu.exec(globalPos);
 }

@@ -44,6 +44,10 @@ private slots:
 
     void on_actionSettingServer_triggered();
 
+    void on_tablePurchase_customContextMenuRequested(const QPoint &pos);
+
+    void on_tableGoods_customContextMenuRequested(const QPoint &pos);
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;

@@ -3,6 +3,7 @@
 #include "WorkersDialog.h"
 #include "ui_WorkersDialog.h"
 
+#include <QMenu>
 #include <qmessagebox.h>
 
 WorkersDialog::WorkersDialog(QSqlQuery *q, QWidget *parent) :
@@ -78,4 +79,38 @@ void WorkersDialog::on_tableWorkers_itemSelectionChanged()
 {
     ui->editButton->setEnabled(true);
     ui->removeButton->setEnabled(true);
+}
+
+void WorkersDialog::on_actionAddWorker_triggered()
+{
+    on_addButton_clicked();
+}
+
+void WorkersDialog::on_actionEditWorker_triggered()
+{
+    on_editButton_clicked();
+}
+
+void WorkersDialog::on_actionRemoveWorker_triggered()
+{
+    on_removeButton_clicked();
+}
+
+void WorkersDialog::on_actionUpdateWorkers_triggered()
+{
+    updateWorkers();
+}
+
+void WorkersDialog::on_tableWorkers_customContextMenuRequested(const QPoint &pos)
+{
+    QMenu contextTableMenu;
+    contextTableMenu.addAction(ui->actionAddWorker);
+    contextTableMenu.addAction(ui->actionEditWorker);
+    contextTableMenu.addAction(ui->actionRemoveWorker);
+    contextTableMenu.addSeparator();
+    contextTableMenu.addAction(ui->actionUpdateWorkers);
+
+    QPoint globalPos = ui->tableWorkers->mapToGlobal(pos);
+
+    contextTableMenu.exec(globalPos);
 }

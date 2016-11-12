@@ -3,9 +3,10 @@
 #include "AddPostDialog.h"
 #include "EditPostDialog.h"
 
+#include <QMenu>
 #include <QMessageBox>
 
-PostSettingDialog::PostSettingDialog(QSqlQuery *q, QWidget *parent) :
+PostSettingDialog::PostSettingDialog(Access *a, QSqlQuery *q, QWidget *parent) :
     QDialog(parent), query(q),
     ui(new Ui::PostSettingDialog)
 {
@@ -93,3 +94,42 @@ void PostSettingDialog::updatePosts()
     }
 }
 // Апаратная часть компьтера
+
+void PostSettingDialog::on_actionAddPost_triggered()
+{
+    on_addButton_clicked();
+}
+
+void PostSettingDialog::on_actionEditPost_triggered()
+{
+    on_editButton_clicked();
+}
+
+void PostSettingDialog::on_actionRemovePost_triggered()
+{
+    on_removeButton_clicked();
+}
+
+void PostSettingDialog::on_actionUpdatePosts_triggered()
+{
+    updatePosts();
+}
+
+void PostSettingDialog::on_tableWidget_itemSelectionChanged()
+{
+
+}
+
+void PostSettingDialog::on_tableWidget_customContextMenuRequested(const QPoint &pos)
+{
+    QMenu contextTableMenu;
+    contextTableMenu.addAction(ui->actionAddPost);
+    contextTableMenu.addAction(ui->actionEditPost);
+    contextTableMenu.addAction(ui->actionRemovePost);
+    contextTableMenu.addSeparator();
+    contextTableMenu.addAction(ui->actionUpdatePosts);
+
+    QPoint globalPos = ui->tableWidget->mapToGlobal(pos);
+
+    contextTableMenu.exec(globalPos);
+}

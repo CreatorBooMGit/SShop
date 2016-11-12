@@ -25,6 +25,16 @@ private slots:
 
     void on_tableWorkers_itemSelectionChanged();
 
+    void on_actionAddWorker_triggered();
+
+    void on_actionEditWorker_triggered();
+
+    void on_actionRemoveWorker_triggered();
+
+    void on_actionUpdateWorkers_triggered();
+
+    void on_tableWorkers_customContextMenuRequested(const QPoint &pos);
+
 private:
     Ui::WorkersDialog *ui;
     QSqlQuery *query;

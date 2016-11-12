@@ -206,6 +206,7 @@ void MainWindow::updateAccess()
 {
     ui->actionGoods->setVisible(access->checkAccess("goodsEnabled"));
     ui->actionPost->setVisible(access->checkAccess("postsEnabled"));
+    ui->actionWorkers->setVisible(access->checkAccess("employeesEnabled"));
     ui->actionProviders->setVisible(access->checkAccess("providerEnabled"));
     ui->menuSettings->setEnabled(access->checkAccess("settingsEnabled"));
     ui->actionSettingServer->setVisible(access->checkAccess("serverSettingEnabled"));
@@ -217,14 +218,14 @@ void MainWindow::updateAccess()
         else
             ui->stackedWidget->setCurrentIndex(1);
     }
-    ui->addPurchaseButton->setEnabled("addPurchaseEnabled");
-    ui->removePurchaseButton->setEnabled("removePurchaseEnabled");
-    ui->confirmPurchasesButton->setEnabled("confirmPurchaseEnabled");
-    ui->printPurchaseButton->setEnabled("printPurchaseEnabled");
+    ui->addPurchaseButton->setEnabled(access->checkAccess("addPurchaseEnabled"));
+    ui->removePurchaseButton->setEnabled(access->checkAccess("removePurchaseEnabled"));
+    ui->confirmPurchasesButton->setEnabled(access->checkAccess("confirmPurchaseEnabled"));
+    ui->printPurchaseButton->setEnabled(access->checkAccess("printPurchaseEnabled"));
 
-    ui->addGoodButton->setEnabled("addGoodEnabled");
-    ui->editGoodButton->setEnabled("editGoodEnabled");
-    ui->removeGoodButton->setEnabled("removeGoodEnabled");
+    ui->addGoodButton->setEnabled(access->checkAccess("addGoodEnabled"));
+    ui->editGoodButton->setEnabled(access->checkAccess("editGoodEnabled"));
+    ui->removeGoodButton->setEnabled(access->checkAccess("removeGoodEnabled"));
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)
@@ -400,6 +401,7 @@ void MainWindow::on_actionLogout_triggered()
     AuthDialog *authDialog = new AuthDialog(&userInfo, query);
     authDialog->exec();
     delete authDialog;
+    updateAccess();
     loginStatusLabel->setText("<img width=\"15\" height=\"15\" src=\":/icons/icons/user.ico\"/> " + userInfo.login);
 }
 
@@ -435,7 +437,7 @@ void MainWindow::updateTimeStatusBar()
 
 void MainWindow::on_actionPost_triggered()
 {
-    PostSettingDialog *postDialog = new PostSettingDialog(query, this);
+    PostSettingDialog *postDialog = new PostSettingDialog(access, query, this);
     postDialog->exec();
     delete postDialog;
     updateAccess();
@@ -446,4 +448,32 @@ void MainWindow::on_actionSettingServer_triggered()
     ServerSettingDialog *serverDialog = new ServerSettingDialog(this);
     serverDialog->exec();
     delete serverDialog;
+}
+
+void MainWindow::on_tablePurchase_customContextMenuRequested(const QPoint &pos)
+{
+    QMenu contextTableMenu;
+    contextTableMenu.addAction(ui->actionAddPost);
+    contextTableMenu.addAction(ui->actionEditPost);
+    contextTableMenu.addAction(ui->actionRemovePost);
+    contextTableMenu.addSeparator();
+    contextTableMenu.addAction(ui->actionUpdatePosts);
+
+    QPoint globalPos = ui->tableWidget->mapToGlobal(pos);
+
+    contextTableMenu.exec(globalPos);
+}
+
+void MainWindow::on_tableGoods_customContextMenuRequested(const QPoint &pos)
+{
+    QMenu contextTableMenu;
+    contextTableMenu.addAction(ui->actionAddPost);
+    contextTableMenu.addAction(ui->actionEditPost);
+    contextTableMenu.addAction(ui->actionRemovePost);
+    contextTableMenu.addSeparator();
+    contextTableMenu.addAction(ui->actionUpdatePosts);
+
+    QPoint globalPos = ui->tableWidget->mapToGlobal(pos);
+
+    contextTableMenu.exec(globalPos);
 }

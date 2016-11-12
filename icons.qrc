@@ -16,5 +16,6 @@
         <file>icons/user.ico</file>
         <file>icons/employees.ico</file>
         <file>icons/info.ico</file>
+        <file>icons/update.ico</file>
     </qresource>
 </RCC>

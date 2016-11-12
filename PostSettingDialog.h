@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QSqlQuery>
 
+#include "access.h"
+
 namespace Ui {
 class PostSettingDialog;
 }
@@ -13,15 +15,25 @@ class PostSettingDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit PostSettingDialog(QSqlQuery *q, QWidget *parent = 0);
+    explicit PostSettingDialog(Access *a, QSqlQuery *q, QWidget *parent = 0);
     ~PostSettingDialog();
 
 private slots:
     void on_addButton_clicked();
-
     void on_editButton_clicked();
-
     void on_removeButton_clicked();
+
+    void on_actionAddPost_triggered();
+
+    void on_actionEditPost_triggered();
+
+    void on_actionRemovePost_triggered();
+
+    void on_actionUpdatePosts_triggered();
+
+    void on_tableWidget_itemSelectionChanged();
+
+    void on_tableWidget_customContextMenuRequested(const QPoint &pos);
 
 private:
     Ui::PostSettingDialog *ui;

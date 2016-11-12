@@ -32,6 +32,9 @@
    </property>
    <item row="0" column="0">
     <widget class="QTableWidget" name="tableWorkers">
+     <property name="contextMenuPolicy">
+      <enum>Qt::CustomContextMenu</enum>
+     </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAsNeeded</enum>
      </property>
@@ -177,6 +180,42 @@
     </layout>
    </item>
   </layout>
+  <action name="actionAddWorker">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/add.ico</normaloff>:/icons/icons/add.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Додати співробітника</string>
+   </property>
+  </action>
+  <action name="actionEditWorker">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/edit.ico</normaloff>:/icons/icons/edit.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Редагувати співробітника</string>
+   </property>
+  </action>
+  <action name="actionRemoveWorker">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/remove.ico</normaloff>:/icons/icons/remove.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Видалити співробітника</string>
+   </property>
+  </action>
+  <action name="actionUpdateWorkers">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/update.ico</normaloff>:/icons/icons/update.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Оновити</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="icons.qrc"/>

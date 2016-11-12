@@ -25,6 +25,16 @@ private slots:
 
     void on_tableProviders_itemSelectionChanged();
 
+    void on_actionAddProvider_triggered();
+
+    void on_actionEditProvider_triggered();
+
+    void on_actionRemoveProvider_triggered();
+
+    void on_actionUpdateProviders_triggered();
+
+    void on_tableProviders_customContextMenuRequested(const QPoint &pos);
+
 private:
     Ui::ProvidersDialog *ui;
     QSqlQuery *query;

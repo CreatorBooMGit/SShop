@@ -20,6 +20,9 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTableWidget" name="tableWidget">
+     <property name="contextMenuPolicy">
+      <enum>Qt::CustomContextMenu</enum>
+     </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
@@ -86,6 +89,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="editButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="minimumSize">
         <size>
          <width>120</width>
@@ -118,6 +124,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="removeButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="minimumSize">
         <size>
          <width>120</width>
@@ -138,6 +147,42 @@
     </layout>
    </item>
   </layout>
+  <action name="actionAddPost">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/add.ico</normaloff>:/icons/icons/add.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Додати посаду</string>
+   </property>
+  </action>
+  <action name="actionEditPost">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/edit.ico</normaloff>:/icons/icons/edit.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Редагувати посаду</string>
+   </property>
+  </action>
+  <action name="actionRemovePost">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/remove.ico</normaloff>:/icons/icons/remove.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Видалити посаду</string>
+   </property>
+  </action>
+  <action name="actionUpdatePosts">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/update.ico</normaloff>:/icons/icons/update.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Оновити</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="icons.qrc"/>
